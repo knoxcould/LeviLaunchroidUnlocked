@@ -11,7 +11,7 @@
     <string name="app_name">LeviLauncher</string>
     <string name="minecraft">Minecraft</string>
     <string name="launch">Launch</string>
-    <string name="beta_badge">Beta</string>
+    <string name="beta_badge">beta</string>
     <string name="debug_badge">Debug</string>
     <string name="cursor">Cursor</string>
     <string name="bedrock_edition">Bedrock Edition</string>
