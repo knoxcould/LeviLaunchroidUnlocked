@@ -4,7 +4,6 @@ on:
   push:
     tags:
       - '*'
-  workflow_dispatch:
 
 jobs:
   build:
@@ -62,6 +61,7 @@ jobs:
         with:
           packages: platform-tools
 
+
       - name: Accept Licenses
         run: yes | sdkmanager --licenses
 
@@ -103,7 +103,7 @@ jobs:
       - name: Sign APK with testkey
         run: |
           APK_IN=$(find app/build/outputs/apk/release -name "*.apk" | head -1)
-          APK_OUT="LeviLauncher-${GITHUB_REF_NAME:-manual}-release.apk"
+          APK_OUT="LeviLauncher-${GITHUB_REF_NAME}-release.apk"
           apksigner sign \
             --key testkey.pk8 \
             --cert testkey.x509.pem \
@@ -117,7 +117,6 @@ jobs:
 
       - name: Publish GitHub Release
         uses: softprops/action-gh-release@v2
-        if: startsWith(github.ref, 'refs/tags/')
         with:
           tag_name: ${{ github.ref_name }}
           name: "LeviLauncher ${{ github.ref_name }}"
